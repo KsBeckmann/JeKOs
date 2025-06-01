@@ -1,0 +1,43 @@
+export PATH="/fakebin:/bin:/sbin:/usr/bin:/usr/sbin"
+
+if [ "$PS1" ]; then
+	if [ "`id -u`" -eq 0 ]; then
+		export PS1='# '
+	else
+		export PS1='$ '
+	fi
+fi
+
+export EDITOR='/bin/vi'
+
+# Source configuration files from /etc/profile.d
+for i in /etc/profile.d/*.sh ; do
+	if [ -r "$i" ]; then
+		. $i
+	fi
+done
+unset i
+
+cd() {
+	echo "command not found"
+}
+
+exit() {
+	echo "command not found"
+}
+
+alias baronicd='builtin cd'
+alias baroniexit='builtin exit'
+alias baronils='/bin/ls'
+alias baronicp='/bin/cp'
+alias baronirm='/bin/rm'
+alias baronimkdir='/bin/mkdir'
+alias baronirmkdir='/bin/rmdir'
+alias baronimv='/bin/mv'
+alias baronipwd='/bin/pwd'
+alias baronicat='/bin/cat'
+alias baronimore='/bin/more'
+alias baroniecho='/bin/echo'
+alias baronips='/bin/ps'
+alias baronikill='/bin/kill'
+alias baroniclear='/usr/bin/clear'
